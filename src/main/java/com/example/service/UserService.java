@@ -83,9 +83,9 @@ public class UserService {
         if (userDetails.getUserName() != null) {
             existingUser.setUserName(userDetails.getUserName());
         }
-        if (userDetails.getPassword() != null) {
-            existingUser.setPassword(passwordEncoder.encode(userDetails.getPassword()));
-        }
+//        if (userDetails.getPassword() != null) {
+//            existingUser.setPassword(passwordEncoder.encode(userDetails.getPassword()));
+//        }
         if (userDetails.getMobile() != null) {
             existingUser.setMobile(userDetails.getMobile());
         }
