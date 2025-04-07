@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -28,6 +29,13 @@ public class AuthController {
         ApiResponse<Map<String, Object>> response = userService.login(user.getEmail(), user.getPassword());
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping
+    public ResponseEntity<ApiResponse<List<User>>> getAllUsers() {
+        ApiResponse<List<User>> response = userService.getAllUsers();
+        return ResponseEntity.ok(response);
+    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<User>> getUserById(@PathVariable UUID id) {

@@ -8,10 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -127,6 +124,12 @@ public class UserService {
             return new ApiResponse<>(false, "Failed to update user: " + e.getMessage(), null);
         }
     }
+
+    public ApiResponse<List<User>> getAllUsers() {
+        List<User> users = userRepository.findAll();
+        return new ApiResponse<>(true, "Users retrieved successfully", users);
+    }
+
 
     public ApiResponse<String> deleteUser(UUID id) {
         if (!userRepository.existsById(id)) {
